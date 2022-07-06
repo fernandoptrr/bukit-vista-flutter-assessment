@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bukit_vista_assessment/cubits/booking_detail_cubit.dart';
+import 'package:flutter_bukit_vista_assessment/cubits/list_guest_cubit.dart';
 import 'package:flutter_bukit_vista_assessment/pages/account_page.dart';
 import 'package:flutter_bukit_vista_assessment/pages/guest_details_page.dart';
 import 'package:flutter_bukit_vista_assessment/pages/home_page.dart';
@@ -16,18 +19,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Bukit Vista',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light(),
-      routes: {
-        MainPage.nameRoute: (context) => const MainPage(),
-        HomePage.nameRoute: (context) => const HomePage(),
-        WalletPage.nameRoute: (context) => const WalletPage(),
-        NotificationPage.nameRoute: (context) => const NotificationPage(),
-        AccountPage.nameRoute: (context) => const AccountPage(),
-        GuestDetails.nameRoute: (context) => const GuestDetails(),
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ListGuestCubit()),
+        BlocProvider(create: (_) => BookingDetailCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Bukit Vista',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light(),
+        routes: {
+          MainPage.nameRoute: (context) => const MainPage(),
+          HomePage.nameRoute: (context) => const HomePage(),
+          WalletPage.nameRoute: (context) => const WalletPage(),
+          NotificationPage.nameRoute: (context) => const NotificationPage(),
+          AccountPage.nameRoute: (context) => const AccountPage(),
+          GuestDetails.nameRoute: (context) => const GuestDetails(),
+        },
+      ),
     );
   }
 }
