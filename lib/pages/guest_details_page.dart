@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bukit_vista_assessment/components/app_bar.dart';
 import 'package:flutter_bukit_vista_assessment/components/item_card.dart';
+import 'package:flutter_bukit_vista_assessment/components/shimmer_loading.dart';
 import 'package:flutter_bukit_vista_assessment/components/text_field.dart';
+import 'package:flutter_bukit_vista_assessment/cubits/booking_detail_cubit.dart';
 import 'package:flutter_bukit_vista_assessment/models/booking.dart';
 import 'package:flutter_bukit_vista_assessment/models/guest.dart';
 import 'package:flutter_bukit_vista_assessment/theme/colors.dart';
@@ -45,7 +48,12 @@ class GuestDetails extends StatelessWidget {
                 status: booking.status,
                 dateRange:
                     "${DateFormat('d MMM y').format(booking.startDate)} - ${DateFormat('d MMM y').format(booking.startDate)}",
-                onTapped: () {},
+                onTapped: () {
+                  context
+                      .read<BookingDetailCubit>()
+                      .getBookingDetail(id: booking.id);
+                  _showDetailBooking(context, booking);
+                },
               );
             },
             separatorBuilder: (context, index) {
@@ -76,7 +84,7 @@ class GuestDetails extends StatelessWidget {
       itemBuilder: (context, index) {
         final key = fieldContents.keys.elementAt(index);
         return CustomTextField(
-          lable: key,
+          label: key,
           body: fieldContents[key]!,
         );
       },
@@ -86,16 +94,117 @@ class GuestDetails extends StatelessWidget {
     );
   }
 
+  Future<void> _showDetailBooking(BuildContext context, Booking booking) {
+    return showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.0),
+        ),
+      ),
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(24),
+          child: BlocBuilder<BookingDetailCubit, BookingDetailState>(
+            builder: (context, state) {
+              if (state is BookingDetailInitial) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ShimmerLoading(
+                      child: Container(
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                    )
+                  ],
+                );
+              } else if (state is BookingDetailLoaded) {
+                booking = booking.copyWith(detail: state.bookingDetail);
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Center(
+                      child: Container(
+                        width: 40,
+                        height: 4,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFA7ACB6),
+                          borderRadius: BorderRadius.circular(40),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    _firstRow(booking),
+                    const SizedBox(height: 29),
+                    _secondRow(booking),
+                    const SizedBox(height: 13),
+                    _thirdRow(booking),
+                    const SizedBox(height: 13),
+                    CustomTextField(
+                      label: "Phone number",
+                      body: booking.detail!.phoneNumber,
+                      bodyTextStyle:
+                          AppTheme.body.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const SizedBox(height: 37),
+                    Text("Hosting Details",
+                        style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
+                    const SizedBox(height: 34),
+                    CustomTextField(
+                      label: "Host",
+                      body: booking.detail!.host,
+                    ),
+                    const SizedBox(height: 18),
+                    CustomTextField(
+                      label: "Profile name",
+                      body: booking.detail!.profileName,
+                    ),
+                    const SizedBox(height: 18),
+                    CustomTextField(
+                      label: "Property Unit",
+                      body: booking.detail!.propertyUnit,
+                    ),
+                    const SizedBox(height: 18),
+                    CustomTextField(
+                      label: "Listing name",
+                      body: booking.detail!.listingName,
+                      bodyTextStyle: AppTheme.body.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: AppColor.mainOrange),
+                    ),
+                    const SizedBox(height: 18),
+                  ],
+                );
+              } else {
+                if (state is BookingDetailLoadingFailed) {
+                  debugPrint(state.toString());
+                }
+                return const SizedBox();
+              }
+            },
+          ),
+        );
+      },
+    );
+  }
+
   Row _thirdRow(Booking booking) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CustomTextField(
-          lable: "Number of guest",
+          label: "Number of guest",
           body: booking.detail!.numOfGuest.toString(),
         ),
         CustomTextField(
-          lable: "Booking value",
+          label: "Booking value",
           body: "\$ ${booking.detail!.value}",
           alignment: CrossAxisAlignment.end,
         ),
@@ -108,11 +217,11 @@ class GuestDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         CustomTextField(
-          lable: "Booking ID",
+          label: "Booking ID",
           body: booking.detail!.id,
         ),
         CustomTextField(
-          lable: "Booking status",
+          label: "Booking status",
           body: booking.detail!.status,
           alignment: CrossAxisAlignment.end,
         ),
@@ -130,7 +239,7 @@ class GuestDetails extends StatelessWidget {
             const Text("Check in", style: AppTheme.subtitle),
             const SizedBox(height: 4),
             Text(DateFormat('HH:mm').format(booking.detail!.checkIn),
-                style: AppTheme.tabBar),
+                style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
             const SizedBox(height: 4),
             Text(DateFormat('MMM d, y').format(booking.detail!.checkIn),
                 style: AppTheme.body),
@@ -143,7 +252,10 @@ class GuestDetails extends StatelessWidget {
               color: AppColor.ink02,
             ),
             const SizedBox(height: 3),
-            Text("${booking.detail!.numOfNight} Nights")
+            Text(
+              "${booking.detail!.numOfNight} Nights",
+              style: AppTheme.body.copyWith(color: AppColor.mainBlue),
+            ),
           ],
         ),
         Column(
@@ -152,7 +264,7 @@ class GuestDetails extends StatelessWidget {
             const Text("Check in", style: AppTheme.subtitle),
             const SizedBox(height: 4),
             Text(DateFormat('HH:mm').format(booking.detail!.checkOut),
-                style: AppTheme.tabBar),
+                style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
             const SizedBox(height: 4),
             Text(DateFormat('MMM d, y').format(booking.detail!.checkOut),
                 style: AppTheme.body),

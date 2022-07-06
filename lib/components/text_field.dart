@@ -4,15 +4,15 @@ import 'package:flutter_bukit_vista_assessment/theme/theme.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
-    required this.lable,
+    required this.label,
     required this.body,
-    this.textStyle,
+    this.bodyTextStyle,
     this.alignment,
   }) : super(key: key);
 
   final String body;
-  final String lable;
-  final TextStyle? textStyle;
+  final String label;
+  final TextStyle? bodyTextStyle;
   final CrossAxisAlignment? alignment;
 
   @override
@@ -20,10 +20,10 @@ class CustomTextField extends StatelessWidget {
     return Column(
       crossAxisAlignment: alignment ?? CrossAxisAlignment.start,
       children: [
-        Text(lable, style: AppTheme.subtitle),
+        Text(label, style: AppTheme.subtitle),
         const SizedBox(height: 5),
         Text(body,
-            style: textStyle ??
+            style: bodyTextStyle ??
                 AppTheme.body.copyWith(fontWeight: FontWeight.w500)),
       ],
     );

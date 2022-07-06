@@ -4,6 +4,8 @@ class AppColor {
   static const Color primary = Color(0xFF3B9DF6);
   static const Color dark = Color(0xFF1C1C1C);
   static const Color danger = Color(0xFFEF4146);
+  static const Color mainOrange = Color(0xFFF69322);
+  static const Color mainBlue = Color(0xFF1076BC);
   static const Color lightOrange = Color(0xFFF29E39);
   static const Color warning = Color(0xFFEFB83E);
   static const Color ink01 = Color(0xFF515C6F);
