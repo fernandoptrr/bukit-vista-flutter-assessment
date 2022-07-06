@@ -4,6 +4,7 @@ import 'package:flutter_bukit_vista_assessment/components/app_bar.dart';
 import 'package:flutter_bukit_vista_assessment/components/item_card.dart';
 import 'package:flutter_bukit_vista_assessment/components/shimmer_loading.dart';
 import 'package:flutter_bukit_vista_assessment/cubits/list_guest_cubit.dart';
+import 'package:flutter_bukit_vista_assessment/pages/guest_details_page.dart';
 import 'package:flutter_bukit_vista_assessment/theme/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -61,7 +62,10 @@ class HomePage extends StatelessWidget {
                       title: guest.name,
                       subtitle: guest.location,
                       imagePath: guest.avatarUrl,
-                      onTapped: () {},
+                      onTapped: () {
+                        Navigator.pushNamed(context, GuestDetails.nameRoute,
+                            arguments: guest);
+                      },
                     );
                   },
                   separatorBuilder: (context, index) {
