@@ -1,0 +1,111 @@
+{
+  "guests": [
+    {
+      "id": "afbb1c86",
+      "name": "Haylie Gouse",
+      "avatar_url": "https://i.pravatar.cc/200?img=1",
+      "location": "Oslo, Finlad",
+      "email": "HaylieGouse@gmail.com",
+      "phone_number": "+3108128198",
+      "guest_since": "2021-12-03 10:32:00",
+      "bookings": [
+        {
+          "id": "HMASJKSSCL",
+          "place_name": "Pondok Lulik #20",
+          "status": "Confirmed",
+          "start_date": "2021-12-14 10:32:00",
+          "end_date": "2022-01-14 10:32:00"
+        },
+        {
+          "id": "HDOLANCSPP",
+          "place_name": "Atra Bamboology",
+          "status": "Canceled",
+          "start_date": "2021-12-14 10:32:00.948513",
+          "end_date": "2022-01-14 10:32:00"
+        }
+      ]
+    },
+    {
+      "id": "a0876467",
+      "name": "Jordyn Levin",
+      "avatar_url": "https://i.pravatar.cc/200?img=2",
+      "location": "New York, USA",
+      "email": "JordyLevin12@gmail.com",
+      "phone_number": "+3194321211",
+      "guest_since": "2020-10-05 10:32:00",
+      "bookings": [
+        {
+          "id": "HKADJKSLDR",
+          "place_name": "Pondok Lulik #20",
+          "status": "Confirmed",
+          "start_date": "2022-02-24 10:32:00",
+          "end_date": "2022-02-26 10:32:00"
+        },
+        {
+          "id": "LAMXJDSISA",
+          "place_name": "Atra Bamboology",
+          "status": "Confirmed",
+          "start_date": "2022-02-14 10:32:00.948513",
+          "end_date": "2022-02-20 10:32:00"
+        },
+        {
+          "id": "PAXLAPFLSS",
+          "place_name": "Atra Bamboology",
+          "status": "Canceled",
+          "start_date": "2022-02-13 10:32:00.948513",
+          "end_date": "2022-02-18 10:32:00"
+        }
+      ]
+    },
+    {
+      "id": "55a72f88",
+      "name": "Charlie Ekstrom Bothman",
+      "avatar_url": "https://i.pravatar.cc/200?img=3",
+      "location": "California, USA",
+      "email": "CharlieBothman@gmail.com",
+      "phone_number": "+3198251620",
+      "guest_since": "2020-06-05 10:32:00",
+      "bookings": []
+    },
+    {
+      "id": "d616f368",
+      "name": "Wilson Workman",
+      "avatar_url": "https://i.pravatar.cc/200?img=4",
+      "location": "Berlin, Germany",
+      "email": "WilsonWorkman77@gmail.com",
+      "phone_number": "+3212354210",
+      "guest_since": "2020-06-02 10:32:00",
+      "bookings": []
+    },
+    {
+      "id": "a0d9a179",
+      "name": "Cooper Sliphron",
+      "avatar_url": "https://i.pravatar.cc/200?img=5",
+      "location": "Paris, France",
+      "email": "CooperSiphron@gmail.com",
+      "phone_number": "+3292817283",
+      "guest_since": "2020-02-01 10:32:00",
+      "bookings": []
+    },
+    {
+      "id": "a97a9f81",
+      "name": "Skylar Calzoni",
+      "avatar_url": "https://i.pravatar.cc/200?img=6",
+      "location": "Moscow, Russia",
+      "email": "SkylarCalz@gmail.com",
+      "phone_number": "+3292201222",
+      "guest_since": "2020-02-05 10:32:00",
+      "bookings": []
+    },
+    {
+      "id": "d63cddab",
+      "name": "Hornet Burok",
+      "avatar_url": "https://i.pravatar.cc/200?img=7",
+      "location": "Moscow, Russia",
+      "email": "HornetBurok@gmail.com",
+      "phone_number": "+32356301949",
+      "guest_since": "2020-02-10 10:32:00",
+      "bookings": []
+    }
+  ]
+}

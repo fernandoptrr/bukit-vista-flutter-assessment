@@ -1,0 +1,16 @@
+{
+  "data": {
+    "id": "HKADJKSLDR",
+    "check_in": "2022-02-14 12:30:00",
+    "check_out": "2022-02-16 11:32:00",
+    "status": "Confirmed",
+    "num_of_night": 2,
+    "num_of_guest": 2,
+    "phone_number": "082123892893",
+    "value": 11.99,
+    "host": "Rafik Bukit Vista",
+    "profile_name": "Bayu & Wayan",
+    "property_unit": "ME Villa - B (1BR)",
+    "listing_name": "2BR Homey Villa in Uluwatu | Kitchen + Wifi + Pool"
+  }
+}
