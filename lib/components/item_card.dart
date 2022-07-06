@@ -29,11 +29,11 @@ class CustomItemCard extends StatelessWidget {
     late Color primaryColor, secondaryColor;
     switch (status) {
       case "Confirmed":
-        primaryColor = Colors.green;
+        primaryColor = AppColor.mainGreen;
         secondaryColor = primaryColor.withOpacity(0.3);
         break;
       case "Canceled":
-        primaryColor = Colors.red;
+        primaryColor = AppColor.mainRed;
         secondaryColor = primaryColor.withOpacity(0.2);
         break;
       default:
@@ -51,7 +51,7 @@ class CustomItemCard extends StatelessWidget {
       ),
       child: Text(
         status,
-        style: AppTheme.chip.copyWith(color: primaryColor),
+        style: AppTheme.caption.copyWith(color: primaryColor),
       ),
     );
   }
@@ -98,7 +98,7 @@ class CustomItemCard extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: AppTheme.title,
+                style: AppTheme.h2,
                 overflow: TextOverflow.ellipsis,
               ),
               const SizedBox(height: 6),
@@ -137,7 +137,7 @@ class CustomItemCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 9),
-            Text(title, style: AppTheme.title),
+            Text(title, style: AppTheme.h2),
             const Spacer(),
             statusChip(status: status!),
           ],

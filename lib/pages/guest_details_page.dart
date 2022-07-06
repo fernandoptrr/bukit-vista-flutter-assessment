@@ -27,7 +27,7 @@ class GuestDetails extends StatelessWidget {
         const SizedBox(height: 8),
         const Text(
           "No Data Available",
-          style: AppTheme.tabBar,
+          style: AppTheme.h3,
         ),
       ],
     );
@@ -70,7 +70,7 @@ class GuestDetails extends StatelessWidget {
               const SizedBox(height: 8),
               const Text(
                 "No Data Available",
-                style: AppTheme.tabBar,
+                style: AppTheme.h3,
               ),
             ],
           );
@@ -155,7 +155,7 @@ class GuestDetails extends StatelessWidget {
                     ),
                     const SizedBox(height: 37),
                     Text("Hosting Details",
-                        style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
+                        style: AppTheme.h3.copyWith(color: AppColor.ink01)),
                     const SizedBox(height: 34),
                     CustomTextField(
                       label: "Host",
@@ -239,7 +239,7 @@ class GuestDetails extends StatelessWidget {
             const Text("Check in", style: AppTheme.subtitle),
             const SizedBox(height: 4),
             Text(DateFormat('HH:mm').format(booking.detail!.checkIn),
-                style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
+                style: AppTheme.h3.copyWith(color: AppColor.ink01)),
             const SizedBox(height: 4),
             Text(DateFormat('MMM d, y').format(booking.detail!.checkIn),
                 style: AppTheme.body),
@@ -264,7 +264,7 @@ class GuestDetails extends StatelessWidget {
             const Text("Check in", style: AppTheme.subtitle),
             const SizedBox(height: 4),
             Text(DateFormat('HH:mm').format(booking.detail!.checkOut),
-                style: AppTheme.tabBar.copyWith(color: AppColor.ink01)),
+                style: AppTheme.h3.copyWith(color: AppColor.ink01)),
             const SizedBox(height: 4),
             Text(DateFormat('MMM d, y').format(booking.detail!.checkOut),
                 style: AppTheme.body),
@@ -304,7 +304,7 @@ class GuestDetails extends StatelessWidget {
               const TabBar(
                 labelColor: AppColor.primary,
                 unselectedLabelColor: AppColor.ink04,
-                labelStyle: AppTheme.tabBar,
+                labelStyle: AppTheme.h3,
                 tabs: [
                   Tab(text: "Overview"),
                   Tab(text: "Bookings"),

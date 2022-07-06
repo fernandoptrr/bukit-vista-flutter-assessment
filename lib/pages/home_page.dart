@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                     const SizedBox(height: 8),
                     const Text(
                       "Something Went Wrong",
-                      style: AppTheme.tabBar,
+                      style: AppTheme.h3,
                     ),
                   ],
                 );

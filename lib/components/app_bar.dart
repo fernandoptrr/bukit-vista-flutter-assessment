@@ -20,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
         title: Text(
           title,
-          style: AppTheme.appBar,
+          style: AppTheme.h1,
         ),
         centerTitle: true,
         backgroundColor: AppColor.primary,
