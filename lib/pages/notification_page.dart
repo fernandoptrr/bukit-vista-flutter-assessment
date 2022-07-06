@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class NotificationPage extends StatelessWidget {
+  const NotificationPage({Key? key}) : super(key: key);
 
-  static const nameRoute = '/';
+  static const nameRoute = '/notification';
 
   @override
   Widget build(BuildContext context) {
